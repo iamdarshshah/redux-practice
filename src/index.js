@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import counterReducer from "./store/reducers/counter";
 import resultReducer from "./store/reducers/result";
+import thunk from "redux-thunk";
 
 import { Provider } from "react-redux";
 import "./index.css";
@@ -30,7 +31,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
   rootReducers,
-  composeEnhancers(applyMiddleware(logger))
+  composeEnhancers(applyMiddleware(logger, thunk))
 );
 
 ReactDOM.render(
